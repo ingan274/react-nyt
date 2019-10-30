@@ -1,2 +1,2 @@
-# react-scraper
-HuffPo Scraper using React, MongoDB, Node, Express
+# NYT News Search
+NYT News Search using React, MongoDB, Node, Express

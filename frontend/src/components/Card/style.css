@@ -1,0 +1,14 @@
+.card-header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.card {
+    margin: 30px auto;
+    border: none;
+}
+
+.card-header {
+    background: none;
+
+}

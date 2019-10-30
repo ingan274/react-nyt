@@ -1,0 +1,11 @@
+.searchInput {
+    margin: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.btn {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: rgb(140, 182, 199);
+    color: white;
+    margin: 0px;
+}

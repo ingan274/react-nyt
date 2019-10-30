@@ -1,0 +1,23 @@
+.header {
+    background: linear-gradient( to bottom,rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.5)), url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+    background-size: cover;
+    background-position: center;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 30px 10px;
+    text-align: center;
+}
+
+.titleText {
+    margin: 0px auto;
+}
+
+.subtitle {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #696969;
+}
+
+
+
+

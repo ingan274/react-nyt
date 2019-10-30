@@ -1,2 +1,2 @@
-# NYT News Search
-NYT News Search using React, MongoDB, Node, Express
+# Google News Search
+Google News Search using React, MongoDB, Node, Express

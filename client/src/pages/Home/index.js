@@ -12,10 +12,18 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-        this.getArticles();
-        this.getSavedArticles();
+        // this.getArticles();
+        // this.getSavedArticles();
 
-        // fetch(`https://newsapi.org/v2/everything?q=${this.state.q}&apiKey=bfb42fbbef264d3eafda5331f48d13b2`) .then(res => this.setState({ articles: [res.data] }))
+        fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=bfb42fbbef264d3eafda5331f48d13b2`)
+        .then(res => {
+            res.json()
+            console.log(res)
+        })
+        .then( (res) => {
+            // this.setState({ articles: res })
+            console.log(res)
+        })
     }
 
     getArticles = () => {

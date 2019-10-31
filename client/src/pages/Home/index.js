@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+import API from "../../utils/api";
 import Card from "../../components/Card";
 import Article from "../../components/Article";
 import "./style.css";
@@ -14,19 +14,20 @@ class Home extends Component {
     componentDidMount = () => {
         this.getArticles();
         this.getSavedArticles();
+
+        // fetch(`https://newsapi.org/v2/everything?q=${this.state.q}&apiKey=bfb42fbbef264d3eafda5331f48d13b2`) .then(res => this.setState({ articles: [res.data] }))
     }
 
     getArticles = () => {
-        API.getArticles({
-            q: this.state.q
-        })
-            .then(res => this.setState({ articles: res.data }))
+        const search = this.state.q
+        API.getArticles(search)
+            .then(res => this.setState({ articles: [res.data] }))
             .catch(err => console.log(err));
     }
 
     getSavedArticles = () => {
         API.getSavedArticles()
-            .then(res => this.setState({ savedArticles: res.data }))
+            .then(res => this.setState({ savedArticles: [res.data] }))
             .catch(err => console.log(err));
     }
 
@@ -81,9 +82,7 @@ class Home extends Component {
                 <ul className="list-group list-group-flush">
                     {this.state.articles.map(article => (
                         <Article
-                            key={article._id}
-                            _id={article._id}
-                            title={article.headline.main}
+                            title={article.title}
                             url={article.web_url}
                             description={article.description}
                             handleClick={this.handleArticleSave}

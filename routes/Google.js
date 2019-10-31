@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const articleController = require("../controller/ArticleController");
 
-// Matches with "/api/nyt"
+// Matches with "/api/google/:query"
 router
-  .route("/")
+  .route("/:query")
   .get(articleController.findAllGoogle);
 
 module.exports = router;

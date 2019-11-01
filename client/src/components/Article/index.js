@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css"
 
 const Article = props => (
     <li className="list-group-item">

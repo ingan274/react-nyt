@@ -1,0 +1,30 @@
+.articleTitle, a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 10px;
+    color:rgb(140, 182, 199);
+    font-size: 20px;
+    text-emphasis: none;
+    text-transform: none;
+}
+
+.articleTitle:hover, a:hover {
+    color:rgb(74, 98, 107);
+    text-emphasis: none;
+    text-transform: none;
+}
+
+.articleDesc {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 18;
+    color:grey;
+    font-size: 15px;
+}
+
+.btn {
+    font-size: 12px;
+}
+
+.btn:hover {
+    color: white;
+    background: rgb(74, 98, 107);
+}

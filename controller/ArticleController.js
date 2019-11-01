@@ -14,8 +14,8 @@ module.exports = {
         axios
             .get(url)
             .then((articles) => {
-                res.json(articles.data.articles)
-                console.log(articles.data.articles)
+                res.json(articles.data)
+                // console.log(articles)
             })
             .catch(err => {
                 res.status(422);
@@ -24,7 +24,7 @@ module.exports = {
     },
     findAllArticles: function (req, res) {
         db.Article
-            .find(req.query)
+            .find()
             .sort({ '_id': -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -33,7 +33,7 @@ module.exports = {
     create: function (req, res) {
         const article = {
             title: req.body.title,
-            url: req.body.web_url,
+            url: req.body.url,
             description: req.body.description,
             author: req.body.author
         };

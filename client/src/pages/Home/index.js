@@ -13,11 +13,13 @@ class Home extends Component {
         q: ""
     }
 
+    // done
     componentDidMount = () => {
         this.getArticles();
         this.getSavedArticles();
     }
 
+    // done
     getArticles = () => {
         const search = this.state.q
         API.getArticles(search)
@@ -44,30 +46,31 @@ class Home extends Component {
 
     getSavedArticles = () => {
         API.getSavedArticles()
-        .then(res => {
-            if (res.length) {
-                this.setState({
-                    // savedArticles: [res.data.articles],
-                    savedArticlesNum: true
-                })
-                // console.log("result",res.data.articles)
-                console.log("result", this.state.savedArticles)
-            } else {
-                this.setState({
-                    savedArticles: [],
-                    savedArticlesNum: false
-                })
-                // console.log("result",res.data.articles)
-                console.log("result", this.state.articles)
-            }
+            .then(res => {
+                if (res.length) {
+                    this.setState({
+                        // savedArticles: [res.data.articles],
+                        savedArticlesNum: true
+                    })
+                    // console.log("result",res.data.articles)
+                    console.log("result", this.state.savedArticles)
+                } else {
+                    this.setState({
+                        savedArticles: [],
+                        savedArticlesNum: false
+                    })
+                    // console.log("result",res.data.articles)
+                    console.log("result", this.state.articles)
+                }
 
-        })
+            })
             .catch(err => console.log(err));
     }
 
-    handleArticleSave = id => {
-        const savedArticle = this.state.articles.find(article => article._id === id);
-        API.saveArticle(savedArticle)
+    handleArticleSave = publishedAt => {
+        const saveArticle = this.state.articles.find(article => article.publishedAt === publishedAt);
+        // console.log(saveArticle)
+        API.saveArticle(saveArticle)
             .then(res => {
                 this.getArticles();
                 this.getSavedArticles();
@@ -82,6 +85,7 @@ class Home extends Component {
             })
     }
 
+    // done
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -89,11 +93,13 @@ class Home extends Component {
         })
     }
 
+    // done
     handleFormSubmit = event => {
         event.preventDefault();
         this.getArticles();
     }
 
+    // done
     renderResults = () => {
         if (this.state.articlesNum) {
             return (
@@ -101,6 +107,8 @@ class Home extends Component {
                     <ul className="list-group list-group-flush">
                         {this.state.articles.map(article => (
                             <Article
+                                key={article.publishedAt}
+                                _id={article.publishedAt}
                                 title={article.title}
                                 url={article.url}
                                 description={article.description}
@@ -109,6 +117,7 @@ class Home extends Component {
                                 handleDelete={this.handleArticleDelete}
                                 buttonText="Save Article"
                             />
+
                         ))}
                     </ul>
                 </Card>

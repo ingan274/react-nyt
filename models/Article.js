@@ -17,10 +17,6 @@ var ArticleSchema = new Schema({
   author: {
     type: String,
     required: true
-  },
-  saved: {
-    type: Boolean,
-    default: false
   }
 });
 

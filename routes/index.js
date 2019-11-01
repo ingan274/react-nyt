@@ -4,8 +4,8 @@ const apiRoutes = require("./Articles.js");
 const googleRoutes = require("./Google.js");
 
 // API Routes
-router.use("/articles", apiRoutes);
-router.use("/google", googleRoutes);
+router.use("/api/articles", apiRoutes);
+router.use("/api/google", googleRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {

@@ -12,30 +12,20 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-        // this.getArticles();
-        // this.getSavedArticles();
-
-        fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=bfb42fbbef264d3eafda5331f48d13b2`)
-        .then(res => {
-            res.json()
-            console.log(res)
-        })
-        .then( (res) => {
-            // this.setState({ articles: res })
-            console.log(res)
-        })
+        this.getArticles();
+        this.getSavedArticles();
     }
 
     getArticles = () => {
         const search = this.state.q
         API.getArticles(search)
-            .then(res => this.setState({ articles: [res.data] }))
+            .then(res => this.setState({ articles: res.articles }))
             .catch(err => console.log(err));
     }
 
     getSavedArticles = () => {
         API.getSavedArticles()
-            .then(res => this.setState({ savedArticles: [res.data] }))
+            .then(res => this.setState({ savedArticles: res.articles }))
             .catch(err => console.log(err));
     }
 
@@ -93,10 +83,10 @@ class Home extends Component {
                             title={article.title}
                             url={article.web_url}
                             description={article.description}
+                            author={article.author}
                             handleClick={this.handleArticleSave}
                             handleDelete={this.handleArticleDelete}
                             buttonText="Save Article"
-                            buttonColor="warning"
                         />
                     ))}
                 </ul>
@@ -112,7 +102,6 @@ class Home extends Component {
                             date={article.date}
                             handleClick={this.handleArticleDelete}
                             buttonText="Delete Article"
-                            buttonColor="outline-warning"
                         />
                     ))}
                 </ul>

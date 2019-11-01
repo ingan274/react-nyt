@@ -9,11 +9,18 @@ module.exports = {
     // findAllGoogle searches the NYT API and returns only the entries we haven't already saved
     findAllGoogle: function (req, res) {
         const search = req.params.query
-        const url = `https://newsapi.org/v2/everything?q=${search}&` + process.env.APIKEY;
+        const url = "https://newsapi.org/v2/everything?q=" + search + "&apiKey=" + process.env.APIKEY;
+        // console.log(url)
         axios
             .get(url)
-            .then(articles => res.json(articles))
-            .catch(err => res.status(422).json(err));
+            .then((articles) => {
+                res.json(articles.data.articles)
+                console.log(articles.data.articles)
+            })
+            .catch(err => {
+                res.status(422);
+                console.log(err)
+            });
     },
     findAllArticles: function (req, res) {
         db.Article
@@ -22,10 +29,16 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    findSavedArticles: function (req, res) {
+
+    create: function (req, res) {
+        const article = {
+            title: req.body.title,
+            url: req.body.web_url,
+            description: req.body.description,
+            author: req.body.author
+        };
         db.Article
-            .find(req.query)
-            .sort({ date: -1 })
+            .create(article)
             .then(dbArticle => res.json(dbArticle))
             .catch(err => res.status(422).json(err));
     },

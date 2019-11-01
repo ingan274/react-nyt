@@ -49,11 +49,11 @@ class Home extends Component {
             .then(res => {
                 if (res.length) {
                     this.setState({
-                        // savedArticles: [res.data.articles],
+                        savedArticles: res.data,
                         savedArticlesNum: true
                     })
                     // console.log("result",res.data.articles)
-                    console.log("result", this.state.savedArticles)
+                    // console.log("result", this.state.savedArticles)
                 } else {
                     this.setState({
                         savedArticles: [],

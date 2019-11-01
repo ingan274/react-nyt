@@ -27,7 +27,10 @@ module.exports = {
             .find()
             .sort({ '_id': -1 })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                res.status(422)
+                console.log("all saved",err)
+            });
     },
 
     create: function (req, res) {
@@ -40,19 +43,28 @@ module.exports = {
         db.Article
             .create(article)
             .then(dbArticle => res.json(dbArticle))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                res.status(422)
+                console.log("create saved",err)
+            });
     },
     update: function (req, res) {
         db.Article
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbArticle => res.json(dbArticle))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                res.status(422)
+                console.log("update saved",err)
+            });
     },
     remove: function (req, res) {
         db.Article
             .findById({ _id: req.params.id })
             .then(dbArticle => dbArticle.remove())
             .then(dbArticle => res.json(dbArticle))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                res.status(422)
+                console.log("delete saved",err)
+            });
     }
 };

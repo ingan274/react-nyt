@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/api.js";
+import API from "../../utils";
 import Card from "../../components/Card";
 import Article from "../../components/Article";
 import "./style.css";

@@ -14,8 +14,8 @@ module.exports = {
         axios
             .get(url)
             .then((articles) => {
-                res.json(articles.data)
-                // console.log(articles)
+                res.json(articles)
+                console.log(articles)
             })
             .catch(err => {
                 res.status(422);
@@ -50,8 +50,11 @@ module.exports = {
     },
     update: function (req, res) {
         db.Article
-            .findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(dbArticle => res.json(dbArticle))
+            .findOneAndUpdate({ _id: req.params.search }, req.body)
+            .then(dbArticle => {
+                console.log(dbArticle)
+                res.json(dbArticle)
+            })
             .catch(err => {
                 res.status(422)
                 console.log("update saved",err)
@@ -59,12 +62,12 @@ module.exports = {
     },
     remove: function (req, res) {
         db.Article
-            .findById({ _id: req.params.id })
+            .find({ _id: req.params.search })
             .then(dbArticle => dbArticle.remove())
             .then(dbArticle => res.json(dbArticle))
             .catch(err => {
                 res.status(422)
-                console.log("delete saved",err)
+                console.log("delete saved error",err)
             });
     }
 };

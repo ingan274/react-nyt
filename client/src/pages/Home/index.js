@@ -30,59 +30,66 @@ class Home extends Component {
                         articlesNum: true
                     })
                     // console.log("result",res.data.articles)
-                    console.log("result", this.state.articles)
+                    // console.log("result", this.state.articles)
                 } else {
                     this.setState({
                         articles: [],
                         articlesNum: false
                     })
-                    // console.log("result",res.data.articles)
-                    console.log("result", this.state.articles)
                 }
 
             })
             .catch(err => console.log(err));
     }
 
+      // working
     getSavedArticles = () => {
         API.getSavedArticles()
             .then(res => {
-                if (res.length) {
+                // console.log("saved response", res)
+                if (res.data.length) {
                     this.setState({
                         savedArticles: res.data,
                         savedArticlesNum: true
                     })
-                    // console.log("result",res.data.articles)
-                    // console.log("result", this.state.savedArticles)
+                    // console.log("saved",res.data)
+                    // console.log("saved", this.state.savedArticles)
                 } else {
                     this.setState({
                         savedArticles: [],
                         savedArticlesNum: false
                     })
-                    // console.log("result",res.data.articles)
-                    console.log("result", this.state.articles)
                 }
 
             })
             .catch(err => console.log(err));
     }
 
-    handleArticleSave = publishedAt => {
-        const saveArticle = this.state.articles.find(article => article.publishedAt === publishedAt);
-        // console.log(saveArticle)
+    // working
+    handleArticleSave = title => {
+        const saveArticle = this.state.articles.find(article => article.title === title);
+        console.log(saveArticle)
+        // alert("Article Saved")
         API.saveArticle(saveArticle)
             .then(res => {
                 this.getArticles();
                 this.getSavedArticles();
+            })
+            .catch(err => {
+                console.log(err)
             });
+        
     }
 
     handleArticleDelete = id => {
+        // console.log("id",id)
         API.deleteArticle(id)
             .then(res => {
-                this.getArticles();
-                this.getSavedArticles();
+                console.log(res)
+                // this.getArticles();
+                // this.getSavedArticles();
             })
+            .catch (err => console.log(err))
     }
 
     // done
@@ -107,8 +114,8 @@ class Home extends Component {
                     <ul className="list-group list-group-flush">
                         {this.state.articles.map(article => (
                             <Article
-                                key={article.publishedAt}
-                                _id={article.publishedAt}
+                                key={article.title}
+                                _id={article.title}
                                 title={article.title}
                                 url={article.url}
                                 description={article.description}
@@ -141,6 +148,7 @@ class Home extends Component {
                                 key={article._id}
                                 _id={article._id}
                                 title={article.title}
+                                author={article.author}
                                 url={article.url}
                                 date={article.date}
                                 handleClick={this.handleArticleDelete}

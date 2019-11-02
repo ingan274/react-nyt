@@ -29,7 +29,7 @@ app.use(routes);
 */
 mongoose.Promise = global.Promise;
 let MONGO_URL;
-const MONGO_LOCAL_URL = 'mongodb://localhost/react-mongo-scraper-db';
+const MONGO_LOCAL_URL = 'mongodb://localhost/Article';
 
 // if (process.env.MONGODB_URI) {
 // 	mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });

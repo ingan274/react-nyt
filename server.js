@@ -31,11 +31,11 @@ mongoose.Promise = global.Promise;
 let MONGO_URL;
 const MONGO_LOCAL_URL = 'mongodb://localhost/Article';
 
-// if (process.env.MONGODB_URI) {
-// 	mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-// } else {
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+} else {
 	mongoose.connect(MONGO_LOCAL_URL, { useNewUrlParser: true }); // local mongo url
-// }
+}
 
 // Start the API server
 app.listen(PORT, function() {

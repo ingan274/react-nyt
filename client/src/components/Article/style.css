@@ -1,5 +1,5 @@
 .articleTitle, a {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', serif;
     padding: 10px;
     color:rgb(140, 182, 199);
     font-size: 20px;
@@ -14,7 +14,7 @@
 }
 
 .articleDesc {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', serif;
     padding: 18;
     color:grey;
     font-size: 15px;
@@ -27,4 +27,11 @@
 .btn:hover {
     color: white;
     background: rgb(74, 98, 107);
+}
+
+.articleAuthor {
+     font-family: 'EB Garamond', serif;
+    padding: 13;
+    color:darkgrey;
+    font-size: 15px;
 }

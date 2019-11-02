@@ -1,17 +1,17 @@
 .searchInput {
     margin: 10px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', serif;
 }
 
 .btn {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', serif;
     background: rgb(140, 182, 199);
     color: white;
     margin: 0px;
 }
 
 .noResults {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', serif;
     color: rgb(140, 182, 199);
     margin: 0px;
     padding: 10px;

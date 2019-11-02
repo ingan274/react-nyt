@@ -14,8 +14,8 @@ module.exports = {
         axios
             .get(url)
             .then((articles) => {
-                res.json(articles)
-                console.log(articles)
+                res.json(articles.data)
+                // console.log(articles)
             })
             .catch(err => {
                 res.status(422);
@@ -62,8 +62,7 @@ module.exports = {
     },
     remove: function (req, res) {
         db.Article
-            .find({ _id: req.params.search })
-            .then(dbArticle => dbArticle.remove())
+            .deleteOne({ _id: req.params.search })
             .then(dbArticle => res.json(dbArticle))
             .catch(err => {
                 res.status(422)

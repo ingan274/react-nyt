@@ -15,7 +15,6 @@ class Home extends Component {
 
     // done
     componentDidMount = () => {
-        this.getArticles();
         this.getSavedArticles();
     }
 
@@ -24,12 +23,14 @@ class Home extends Component {
         const search = this.state.q
         API.getArticles(search)
             .then(res => {
+
                 if (res.data.articles) {
                     this.setState({
                         articles: res.data.articles,
                         articlesNum: true
                     })
-                    // console.log("result",res.data.articles)
+
+                    // console.log("result", res.data.articles)
                     // console.log("result", this.state.articles)
                 } else {
                     this.setState({
@@ -72,7 +73,7 @@ class Home extends Component {
         // alert("Article Saved")
         API.saveArticle(saveArticle)
             .then(res => {
-                this.getArticles();
+                // this.getArticles();
                 this.getSavedArticles();
             })
             .catch(err => {
@@ -87,7 +88,7 @@ class Home extends Component {
             .then(res => {
                 console.log(res)
                 // this.getArticles();
-                // this.getSavedArticles();
+                this.getSavedArticles();
             })
             .catch (err => console.log(err))
     }
@@ -150,7 +151,7 @@ class Home extends Component {
                                 title={article.title}
                                 author={article.author}
                                 url={article.url}
-                                date={article.date}
+                                description={article.description}
                                 handleClick={this.handleArticleDelete}
                                 buttonText="Delete Article"
                             />
